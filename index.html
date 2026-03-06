@@ -6,11 +6,9 @@
   <title>Asterbourne Chinese Takeaway | Clacton-on-Sea</title>
   <meta name="description" content="Asterbourne Chinese Takeaway, 59 Coppins Road, Clacton-on-Sea. Freshly prepared Chinese food. Call 01255 429 600 to order.">
 
-  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
 
-  <!-- Main CSS -->
   <link rel="stylesheet" href="style.css">
   
   <script type="application/ld+json">
@@ -22,28 +20,27 @@
      "telephone": "01255429600",
      "address": {
        "@type": "PostalAddress",
+       "streetAddress": "59 Coppins Road",
        "addressLocality": "Clacton-on-Sea",
+       "postalCode": "CO15 3HT",
        "addressCountry": "UK"
      },
      "priceRange": "££"
     }
-    </script>
+  </script>
 </head>
 <body>
 
-  <!-- HEADER -->
   <header class="header">
     <div class="header-logo">
       Asterbourne
       <span>Chinese Takeaway</span>
     </div>
-    <a href="tel:01255429600" class="header-call">📞 Call Now</a>
+    <a href="tel:01255429600" class="header-call">Call Now</a>
   </header>
 
-  <!-- HERO SECTION -->
   <section class="hero">
-    <div class="hero-badge">Est. Clacton-on-Sea <span id="openStatus"></span>
-    </div>
+    <div class="hero-badge">Est. Clacton-on-Sea <span id="openStatus"></span></div>
     <h1>Asterbourne<br>Chinese Takeaway</h1>
     <p>Freshly Prepared • Collection & Delivery</p>
     <div class="hero-buttons">
@@ -52,8 +49,7 @@
     </div>
   </section>
 
-  <!-- INFO BAR -->
-  <div class="info-bar">
+  <div class="info-bar fade-in">
     <div class="info-item">
       <span class="info-label">Address</span>
       <span class="info-value">59 Coppins Road</span>
@@ -68,8 +64,7 @@
     </div>
   </div>
 
-  <!-- POPULAR ITEMS -->
-  <section class="popular-section">
+  <section class="popular-section fade-in">
     <div class="section-header">
       <h2 class="section-title">Customer Favourites</h2>
       <div class="section-rule"></div>
@@ -97,76 +92,67 @@
     </div>
   </section>
 
-  <!-- LOCATION SECTION -->
-  <section class="location-section">
+  <section class="location-section fade-in">
     <h2 class="section-title">Visit Us</h2>
     <p>59 Coppins Road, Clacton-on-Sea, CO15 3HT</p>
-        <div class="map-container" style="margin-top:20px;">
-          <iframe src="https://googleusercontent.com/maps.google.com/1" allowfullscreen="" loading="lazy"></iframe>
-        </div>
-
+    <div class="map-container">
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2466.8227694935414!2d1.14441587714885!3d51.7910909719391!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47d96cc810f39335%3A0x6a0c0f86580f8234!2s59%20Coppins%20Rd%2C%20Clacton-on-Sea%20CO15%203HT!5e0!3m2!1sen!2suk!4v1715600000000!5m2!1sen!2suk" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+    </div>
     <a href="tel:01255429600" class="big-phone">📞 01255 429 600</a>
   </section>
   
   <div class="allergy-bar">
-Food allergies & intolerances: please speak to staff when ordering.
+    Food allergies & intolerances: please speak to staff when ordering.
   </div>
 
-  <!-- FOOTER -->
-  
   <footer>
-    © 2026 <strong>Asterbourne</strong>. All rights reserved.
-    <button id="topBtn">↑</button>
+    &copy; 2026 <strong>Asterbourne Chinese</strong>. All rights reserved.
+  </footer>
 
-    <script>
+  <div class="order-bar">
+    <a href="tel:01255429600">Call to Order</a>
+    <a href="menu.html">View Menu</a>
+  </div>
+
+  <button onclick="window.scrollTo({top:0, behavior:'smooth'})" id="topBtn" title="Go to top">↑</button>
+
+  <script>
+    // 1. OPEN/CLOSED STATUS LOGIC
+    function checkOpen(){
+      const now = new Date();
+      const mins = now.getHours() * 60 + now.getMinutes();
+      const status = document.getElementById("openStatus");
+      // 16:30 (990) to 23:00 (1380)
+      if(mins >= 990 && mins < 1380){
+        status.innerHTML = " • OPEN NOW";
+        status.style.color = "#7CFF7C";
+      } else {
+        status.innerHTML = " • CLOSED";
+        status.style.color = "#FF6B6B";
+      }
+    }
+    checkOpen();
+
+    // 2. BACK TO TOP BUTTON
     const topBtn = document.getElementById("topBtn");
-    
     window.onscroll = function() {
-      if (document.documentElement.scrollTop > 300) {
+      if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
         topBtn.style.display = "block";
       } else {
         topBtn.style.display = "none";
       }
     };
-    
-    topBtn.onclick = function(){
-      window.scrollTo({top:0,behavior:"smooth"});
-    };
-    </script>
-    
-    <div class="order-bar">
-    <a href="tel:01255429600">📞 Call to Order</a>
-    <a href="menu.html">📋 View Menu</a>
-    </div>
-  </footer>
 
-<script>
+    // 3. FADE-IN ANIMATION LOGIC
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting){
+          entry.target.classList.add("visible");
+        }
+      });
+    }, { threshold: 0.1 });
 
-function checkOpen(){
-
-const now = new Date();
-const minutes = now.getHours() * 60 + now.getMinutes();
-
-const status = document.getElementById("openStatus");
-
-// 16:30 (990 mins) to 23:00 (1380 mins)
-if(minutes >= 990 && minutes < 1380){
-
-
-status.innerHTML = " • OPEN NOW";
-status.style.color = "#7CFF7C";
-
-}else{
-
-status.innerHTML = " • CLOSED";
-status.style.color = "#FF6B6B";
-
-}
-
-}
-
-checkOpen();
-
-</script>
+    document.querySelectorAll(".fade-in").forEach(el => { observer.observe(el); });
+  </script>
 </body>
 </html>
