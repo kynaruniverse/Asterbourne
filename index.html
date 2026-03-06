@@ -101,25 +101,17 @@
   <section class="location-section">
     <h2 class="section-title">Visit Us</h2>
     <p>59 Coppins Road, Clacton-on-Sea, CO15 3HT</p>
-    <div class="map-container" style="margin-top:20px;">
-      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2473.1818274648584!2d1.1396!3d51.7997!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNTHCsDQ3JzU4LjkiTiAxwrAwOCcyMi42IkU!5e0!3m2!1sen!2suk!4v1700000000000" allowfullscreen="" loading="lazy"></iframe>
-    </div>
+        <div class="map-container" style="margin-top:20px;">
+          <iframe src="https://googleusercontent.com/maps.google.com/1" allowfullscreen="" loading="lazy"></iframe>
+        </div>
+
     <a href="tel:01255429600" class="big-phone">📞 01255 429 600</a>
   </section>
   
   <div class="allergy-bar">
 Food allergies & intolerances: please speak to staff when ordering.
   </div>
-<section class="map-section">
 
-<h2>Find Us</h2>
-
-<iframe
-src="https://maps.google.com/maps?q=59%20Coppins%20Road%20Clacton-on-Sea&t=&z=15&ie=UTF8&iwloc=&output=embed"
-loading="lazy">
-</iframe>
-
-</section>
   <!-- FOOTER -->
   
   <footer>
@@ -148,18 +140,18 @@ loading="lazy">
     </div>
   </footer>
 
-  <!-- STICKY CALL BUTTON -->
-  <a href="tel:01255429600" class="sticky-call">📞 Tap to Call — 01255 429 600</a>
 <script>
 
 function checkOpen(){
 
 const now = new Date();
-const hour = now.getHours();
+const minutes = now.getHours() * 60 + now.getMinutes();
 
 const status = document.getElementById("openStatus");
 
-if(hour >= 16 && hour <= 22){
+// 16:30 (990 mins) to 23:00 (1380 mins)
+if(minutes >= 990 && minutes < 1380){
+
 
 status.innerHTML = " • OPEN NOW";
 status.style.color = "#7CFF7C";
