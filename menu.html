@@ -3,25 +3,50 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
   <title>Asterbourne Chinese Takeaway - Full Menu</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+  
   <link rel="stylesheet" href="style.css">
+  
 </head>
 <body>
 
 <header class="header">
   <div class="header-logo">Asterbourne Chinese Takeaway</div>
-  <a href="tel:+441234567890" class="header-call">Call Now</a>
+  <a href="tel:01255429600" class="header-call">Call Now</a>
 </header>
 
 <section class="hero">
-  <h1>Our Menu</h1>
-  <p>Explore our full selection of delicious dishes</p>
+  <div class="hero-badge">Asterbourne Chinese Takeaway</div>
+  <h1>Our Full Menu</h1>
+  <p>Freshly prepared traditional Chinese dishes</p>
+
+  <div class="hero-buttons">
+    <a href="tel:01255429600" class="btn-primary">📞 Call to Order</a>
+    <a href="index.html" class="btn-outline">← Back to Home</a>
+  </div>
 </section>
 
 <main class="menu-section">
+  <div class="menu-search">
+  <input type="text" id="menuSearch" placeholder="Search dishes...">
+  </div>
+  <nav class="menu-nav">
+    <a href="#appetisers">Appetisers</a>
+    <a href="#ribs">Ribs</a>
+    <a href="#seafood">Seafood</a>
+    <a href="#chicken">Chicken</a>
+    <a href="#beef">Beef</a>
+    <a href="#rice">Rice</a>
+    <a href="#setmeals">Set Meals</a>
+  </nav>
 
   <!-- APPETISERS -->
-  <div class="section">
+  <div class="section fade-in" id="appetisers">
     <h2>Appetisers <span style="font-size:0.85rem;">頭盤</span></h2>
     <div class="menu-items">
       <div class="menu-item"><span class="item-name"><span class="num">1</span> Mixed Appetisers (For 2) <span class="desc">(Seaweed, Sesame Prawn Toast, Mini Veg Spring Rolls, Spare Ribs & Satay Chicken Skewers)</span></span><span class="item-price">£10.80</span></div>
@@ -52,7 +77,7 @@
   </div>
 
   <!-- SPARE RIBS -->
-  <div class="section">
+  <div class="section fade-in" id="ribs">
     <h2>Spare Ribs <span style="font-size:0.85rem;">排骨</span></h2>
     <div class="menu-items">
       <div class="menu-item"><span class="item-name">Spare Ribs in Peking Sauce</span><span class="item-price">£7.40</span></div>
@@ -64,7 +89,7 @@
   </div>
 
   <!-- Repeat same pattern for SOUP, SEAFOOD, CHICKEN, DUCK, BEEF, PORK, LAMB, VEGETARIAN, UDON, CHOW MEIN, RICE, CRISPY NOODLES, EGG FOO YUNG, SPICY SNACK, ENGLISH, EXTRA, DESSERTS, SET DINNERS -->
-  <!-- Each section will use <div class="section"><h2>Section Name</h2><div class="menu-items">...</div></div> -->
+  <!-- Each section will use <div class="section fade-in"><h2>Section Name</h2><div class="menu-items">...</div></div> -->
 
 </main>
 
@@ -98,5 +123,44 @@
   &copy; 2026 Asterbourne Chinese Takeaway
 </footer>
 
+<script>
+
+const search = document.getElementById("menuSearch");
+
+search.addEventListener("keyup", function(){
+
+const term = search.value.toLowerCase();
+const items = document.querySelectorAll(".menu-item");
+
+items.forEach(item => {
+
+const text = item.innerText.toLowerCase();
+
+item.style.display = text.includes(term) ? "flex" : "none";
+
+});
+
+});
+
+</script>
+<script>
+
+const observer = new IntersectionObserver(entries => {
+
+entries.forEach(entry => {
+
+if(entry.isIntersecting){
+entry.target.classList.add("visible");
+}
+
+});
+
+});
+
+document.querySelectorAll(".fade-in").forEach(el => {
+observer.observe(el);
+});
+
+</script>
 </body>
 </html>

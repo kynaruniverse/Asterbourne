@@ -12,6 +12,22 @@
 
   <!-- Main CSS -->
   <link rel="stylesheet" href="style.css">
+  
+  <script type="application/ld+json">
+  {
+     "@context": "https://schema.org",
+     "@type": "Restaurant",
+     "name": "Asterbourne Chinese Takeaway",
+     "servesCuisine": "Chinese",
+     "telephone": "01255429600",
+     "address": {
+       "@type": "PostalAddress",
+       "addressLocality": "Clacton-on-Sea",
+       "addressCountry": "UK"
+     },
+     "priceRange": "££"
+    }
+    </script>
 </head>
 <body>
 
@@ -26,7 +42,8 @@
 
   <!-- HERO SECTION -->
   <section class="hero">
-    <div class="hero-badge">Est. Clacton-on-Sea</div>
+    <div class="hero-badge">Est. Clacton-on-Sea <span id="openStatus"></span>
+    </div>
     <h1>Asterbourne<br>Chinese Takeaway</h1>
     <p>Freshly Prepared • Collection & Delivery</p>
     <div class="hero-buttons">
@@ -89,14 +106,75 @@
     </div>
     <a href="tel:01255429600" class="big-phone">📞 01255 429 600</a>
   </section>
+  
+  <div class="allergy-bar">
+Food allergies & intolerances: please speak to staff when ordering.
+  </div>
+<section class="map-section">
 
+<h2>Find Us</h2>
+
+<iframe
+src="https://maps.google.com/maps?q=59%20Coppins%20Road%20Clacton-on-Sea&t=&z=15&ie=UTF8&iwloc=&output=embed"
+loading="lazy">
+</iframe>
+
+</section>
   <!-- FOOTER -->
+  
   <footer>
     © 2026 <strong>Asterbourne</strong>. All rights reserved.
+    <button id="topBtn">↑</button>
+
+    <script>
+    const topBtn = document.getElementById("topBtn");
+    
+    window.onscroll = function() {
+      if (document.documentElement.scrollTop > 300) {
+        topBtn.style.display = "block";
+      } else {
+        topBtn.style.display = "none";
+      }
+    };
+    
+    topBtn.onclick = function(){
+      window.scrollTo({top:0,behavior:"smooth"});
+    };
+    </script>
+    
+    <div class="order-bar">
+    <a href="tel:01255429600">📞 Call to Order</a>
+    <a href="menu.html">📋 View Menu</a>
+    </div>
   </footer>
 
   <!-- STICKY CALL BUTTON -->
   <a href="tel:01255429600" class="sticky-call">📞 Tap to Call — 01255 429 600</a>
+<script>
 
+function checkOpen(){
+
+const now = new Date();
+const hour = now.getHours();
+
+const status = document.getElementById("openStatus");
+
+if(hour >= 16 && hour <= 22){
+
+status.innerHTML = " • OPEN NOW";
+status.style.color = "#7CFF7C";
+
+}else{
+
+status.innerHTML = " • CLOSED";
+status.style.color = "#FF6B6B";
+
+}
+
+}
+
+checkOpen();
+
+</script>
 </body>
 </html>
