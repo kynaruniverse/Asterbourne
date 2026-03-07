@@ -1,158 +1,279 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Asterbourne Chinese Takeaway | Clacton-on-Sea</title>
-  <meta name="description" content="Asterbourne Chinese Takeaway, 59 Coppins Road, Clacton-on-Sea. Freshly prepared Chinese food. Call 01255 429 600 to order.">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asterbourne Chinese Takeaway</title>
+    <style>
+        /* CSS Variables for Branding */
+        :root {
+            --maroon: #800000;
+            --yellow: #FFFF00;
+            --white: #ffffff;
+            --text-dark: #222;
+            --light-bg: #fdfdfd;
+        }
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--light-bg);
+            color: var(--text-dark);
+            scroll-behavior: smooth;
+        }
 
-  <link rel="stylesheet" href="style.css">
-  
-  <script type="application/ld+json">
-  {
-     "@context": "https://schema.org",
-     "@type": "Restaurant",
-     "name": "Asterbourne Chinese Takeaway",
-     "servesCuisine": "Chinese",
-     "telephone": "01255429600",
-     "address": {
-       "@type": "PostalAddress",
-       "streetAddress": "59 Coppins Road",
-       "addressLocality": "Clacton-on-Sea",
-       "postalCode": "CO15 3HT",
-       "addressCountry": "UK"
-     },
-     "priceRange": "££"
-    }
-  </script>
+        /* Header & Contact */
+        header {
+            background-color: var(--maroon);
+            color: var(--white);
+            text-align: center;
+            padding: 25px 15px;
+            border-bottom: 5px solid var(--yellow);
+        }
+
+        h1 { margin: 0; font-size: 2.5rem; text-transform: uppercase; }
+        .tagline { margin: 5px 0; font-style: italic; color: var(--yellow); }
+
+        .contact-bar {
+            background: #fff;
+            padding: 15px;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .btn-call {
+            background-color: var(--maroon);
+            color: var(--yellow);
+            padding: 12px 25px;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 50px;
+            display: inline-block;
+            font-size: 1.2rem;
+            border: 2px solid var(--yellow);
+        }
+
+        /* Navigation & Search */
+        .sticky-tools {
+            position: sticky;
+            top: 0;
+            background: white;
+            z-index: 1000;
+            padding: 10px 0;
+            border-bottom: 1px solid #ddd;
+        }
+
+        #searchInput {
+            width: 90%;
+            display: block;
+            margin: 0 auto 10px;
+            padding: 12px;
+            border: 2px solid var(--maroon);
+            border-radius: 8px;
+            font-size: 1rem;
+        }
+
+        .category-nav {
+            display: flex;
+            overflow-x: auto;
+            white-space: nowrap;
+            padding: 5px 10px;
+            gap: 10px;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .cat-btn {
+            background: var(--maroon);
+            color: white;
+            padding: 8px 15px;
+            border-radius: 20px;
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: bold;
+        }
+
+        /* Menu Grid */
+        .container { max-width: 800px; margin: auto; padding: 15px; }
+
+        .menu-section { margin-bottom: 30px; scroll-margin-top: 130px; }
+        .menu-section h2 { 
+            background: var(--maroon); 
+            color: var(--yellow); 
+            padding: 10px; 
+            border-radius: 4px;
+            font-size: 1.2rem;
+        }
+
+        .item-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+            align-items: center;
+        }
+
+        .item-info { flex: 1; padding-right: 10px; }
+        .item-no { font-weight: bold; color: var(--maroon); margin-right: 5px; }
+        .item-name { font-weight: 500; }
+        .item-desc { display: block; font-size: 0.85rem; color: #666; margin-top: 2px; }
+        .item-price { font-weight: bold; white-space: nowrap; }
+
+        /* Set Dinners Feature Boxes */
+        .set-dinner-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 15px;
+        }
+
+        .set-card {
+            background: #fff;
+            border-left: 10px solid var(--maroon);
+            border-right: 1px solid #ddd;
+            border-top: 1px solid #ddd;
+            border-bottom: 1px solid #ddd;
+            padding: 15px;
+            border-radius: 0 8px 8px 0;
+            box-shadow: 2px 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .set-card h3 { color: var(--maroon); margin: 0 0 10px 0; border-bottom: 1px solid var(--yellow); padding-bottom: 5px; }
+        .set-price { float: right; color: var(--text-dark); }
+
+        /* Map & Footer */
+        .map-section { margin-top: 40px; text-align: center; }
+        footer {
+            background: var(--maroon);
+            color: white;
+            text-align: center;
+            padding: 30px 15px;
+            margin-top: 50px;
+        }
+        footer a { color: var(--yellow); text-decoration: none; font-weight: bold; }
+    </style>
 </head>
 <body>
 
-  <header class="header">
-    <div class="header-logo">
-      Asterbourne
-      <span>Chinese Takeaway</span>
+<header>
+    <h1>ASTERBOURNE</h1>
+    <p class="tagline">Authentic Chinese Takeaway</p>
+</header>
+
+<div class="contact-bar">
+    <a href="tel:01255429600" class="btn-call">📞 ORDER NOW: 01255 429 600</a>
+    <p style="margin-top:10px; font-size:0.9rem;">59 Coppins Road, Clacton-on-Sea, CO15 3HT</p>
+</div>
+
+<div class="sticky-tools">
+    <input type="text" id="searchInput" placeholder="Search menu (e.g. 'Beef', 'Duck', '134')..." onkeyup="filterMenu()">
+    <div class="category-nav" id="catNav">
+        </div>
+</div>
+
+<div class="container">
+    <div id="mainMenu">
+        </div>
+
+    <div class="menu-section" id="setDinners">
+        <h2 style="background: var(--yellow); color: var(--maroon);">SPECIAL SET DINNERS</h2>
+        <div class="set-dinner-grid" id="setDinnerContent">
+            </div>
     </div>
-    <a href="tel:01255429600" class="header-call">Call Now</a>
-  </header>
 
-  <section class="hero">
-    <div class="hero-badge">Est. Clacton-on-Sea <span id="openStatus"></span></div>
-    <h1>Asterbourne<br>Chinese Takeaway</h1>
-    <p>Freshly Prepared • Collection & Delivery</p>
-    <div class="hero-buttons">
-      <a href="menu.html" class="btn-primary">View Full Menu</a>
-      <a href="tel:01255429600" class="btn-outline">Call to Order</a>
+    <div class="map-section">
+        <h3>FIND US</h3>
+        <a href="https://www.google.com/maps/dir/?api=1&destination=59+Coppins+Road+Clacton-on-Sea+CO15+3HT" target="_blank">
+            <img src="https://maps.googleapis.com/maps/api/staticmap?center=59+Coppins+Road,Clacton-on-Sea,CO15+3HT&zoom=15&size=400x200&sensor=false&markers=color:red%7C59+Coppins+Road,Clacton-on-Sea,CO15+3HT&key=YOUR_API_KEY_OPTIONAL" alt="Map Location" style="width:100%; border-radius:8px; border:2px solid var(--maroon);">
+            <p>Tap to open in Google Maps</p>
+        </a>
     </div>
-  </section>
+</div>
 
-  <div class="info-bar fade-in">
-    <div class="info-item">
-      <span class="info-label">Address</span>
-      <span class="info-value">59 Coppins Road</span>
-    </div>
-    <div class="info-item">
-      <span class="info-label">Hours</span>
-      <span class="info-value">7 Days • 4:30pm – 11pm</span>
-    </div>
-    <div class="info-item">
-      <span class="info-label">Delivery</span>
-      <span class="info-value">Free over £15</span>
-    </div>
-  </div>
+<footer>
+    <p>&copy; 2026 Asterbourne Chinese Takeaway</p>
+    [span_2](start_span)<p>All items subject to availability[span_2](end_span)</p>
+</footer>
 
-  <section class="popular-section fade-in">
-    <div class="section-header">
-      <h2 class="section-title">Customer Favourites</h2>
-      <div class="section-rule"></div>
-    </div>
-    <div class="popular-grid">
-      <div class="popular-card">
-        <div class="popular-name">Crispy Aromatic Duck</div>
-        <div class="popular-price">from £11.20</div>
-      </div>
-      <div class="popular-card">
-        <div class="popular-name">Chicken Chow Mein</div>
-        <div class="popular-price">from £5.30</div>
-      </div>
-      <div class="popular-card">
-        <div class="popular-name">Crispy Shredded Beef</div>
-        <div class="popular-price">£7.70</div>
-      </div>
-      <div class="popular-card">
-        <div class="popular-name">Munchy Box</div>
-        <div class="popular-price">£16.00</div>
-      </div>
-    </div>
-    <div style="text-align:center; margin-top:30px;">
-      <a href="menu.html" class="btn-primary">Browse Full Menu</a>
-    </div>
-  </section>
+<script>
+    // Load and Build the Menu
+    async function initMenu() {
+        try {
+            const response = await fetch('menu.json');
+            const data = await response.json();
+            
+            const mainMenu = document.getElementById('mainMenu');
+            const catNav = document.getElementById('catNav');
+            const setDinnerContent = document.getElementById('setDinnerContent');
 
-  <section class="location-section fade-in">
-    <h2 class="section-title">Visit Us</h2>
-    <p>59 Coppins Road, Clacton-on-Sea, CO15 3HT</p>
-    <div class="map-container">
-      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2466.8227694935414!2d1.14441587714885!3d51.7910909719391!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47d96cc810f39335%3A0x6a0c0f86580f8234!2s59%20Coppins%20Rd%2C%20Clacton-on-Sea%20CO15%203HT!5e0!3m2!1sen!2suk!4v1715600000000!5m2!1sen!2suk" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
-    </div>
-    <a href="tel:01255429600" class="big-phone">📞 01255 429 600</a>
-  </section>
-  
-  <div class="allergy-bar">
-    Food allergies & intolerances: please speak to staff when ordering.
-  </div>
+            // 1. Build Regular Categories
+            data.categories.forEach(cat => {
+                // Add to Nav
+                const navLink = document.createElement('a');
+                navLink.href = `#${cat.id}`;
+                navLink.className = 'cat-btn';
+                navLink.innerText = cat.name.split(' ')[0]; // Use first word for mobile buttons
+                catNav.appendChild(navLink);
 
-  <footer>
-    &copy; 2026 <strong>Asterbourne Chinese</strong>. All rights reserved.
-  </footer>
+                // Add Menu Section
+                let section = document.createElement('section');
+                section.className = 'menu-section';
+                section.id = cat.id;
+                
+                let html = `<h2>${cat.name}</h2>`;
+                cat.items.forEach(item => {
+                    html += `
+                        <div class="item-row">
+                            <div class="item-info">
+                                <span class="item-no">${item.no}.</span>
+                                <span class="item-name">${item.name}</span>
+                                ${item.desc ? `<span class="item-desc">${item.desc}</span>` : ''}
+                            </div>
+                            <div class="item-price">${item.price}</div>
+                        </div>
+                    `;
+                });
+                section.innerHTML = html;
+                mainMenu.appendChild(section);
+            });
 
-  <div class="order-bar">
-    <a href="tel:01255429600">Call to Order</a>
-    <a href="menu.html">View Menu</a>
-  </div>
+            // 2. Build Set Dinners
+            data.setDinners.forEach(set => {
+                const card = `
+                    <div class="set-card">
+                        <h3>${set.name} <span class="set-price">${set.price}</span></h3>
+                        <p style="font-size:0.9rem; line-height:1.4;">${set.details}</p>
+                    </div>
+                `;
+                setDinnerContent.innerHTML += card;
+            });
 
-  <button onclick="window.scrollTo({top:0, behavior:'smooth'})" id="topBtn" title="Go to top">↑</button>
-
-  <script>
-    // 1. OPEN/CLOSED STATUS LOGIC
-    function checkOpen(){
-      const now = new Date();
-      const mins = now.getHours() * 60 + now.getMinutes();
-      const status = document.getElementById("openStatus");
-      // 16:30 (990) to 23:00 (1380)
-      if(mins >= 990 && mins < 1380){
-        status.innerHTML = " • OPEN NOW";
-        status.style.color = "#7CFF7C";
-      } else {
-        status.innerHTML = " • CLOSED";
-        status.style.color = "#FF6B6B";
-      }
-    }
-    checkOpen();
-
-    // 2. BACK TO TOP BUTTON
-    const topBtn = document.getElementById("topBtn");
-    window.onscroll = function() {
-      if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
-        topBtn.style.display = "block";
-      } else {
-        topBtn.style.display = "none";
-      }
-    };
-
-    // 3. FADE-IN ANIMATION LOGIC
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if(entry.isIntersecting){
-          entry.target.classList.add("visible");
+        } catch (error) {
+            console.error("Error loading menu:", error);
         }
-      });
-    }, { threshold: 0.1 });
+    }
 
-    document.querySelectorAll(".fade-in").forEach(el => { observer.observe(el); });
-  </script>
+    // Real-time Filter Search
+    function filterMenu() {
+        const input = document.getElementById('searchInput').value.toLowerCase();
+        const rows = document.querySelectorAll('.item-row');
+        const sections = document.querySelectorAll('.menu-section');
+
+        rows.forEach(row => {
+            const text = row.innerText.toLowerCase();
+            row.style.display = text.includes(input) ? 'flex' : 'none';
+        });
+
+        // Hide headers if no items visible in that section
+        sections.forEach(section => {
+            const visibleRows = section.querySelectorAll('.item-row[style="display: flex;"]');
+            if (section.id !== 'setDinners') {
+                section.style.display = (visibleRows.length > 0) ? 'block' : 'none';
+            }
+        });
+    }
+
+    window.onload = initMenu;
+</script>
+
 </body>
 </html>
